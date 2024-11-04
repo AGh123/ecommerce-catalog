@@ -1,0 +1,14 @@
+@if(drawerService.isDrawerOpen()){
+<div class="overlay" (click)="closeDrawer()"></div>
+<div
+  class="drawer"
+  [class.open]="drawerService.isDrawerOpen()"
+  [class.from-right]="direction() === 'right'"
+  [class.from-left]="direction() === 'left'"
+>
+  <button class="close-button" (click)="closeDrawer()">
+    <mat-icon fontSet="material-icons-outlined">close</mat-icon>
+  </button>
+  <ng-content></ng-content>
+</div>
+}
