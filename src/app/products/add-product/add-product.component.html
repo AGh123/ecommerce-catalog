@@ -1,0 +1,47 @@
+@if(isSpinner()){
+<div class="spinner-container">
+  <mat-spinner diameter="300"></mat-spinner>
+</div>
+} @else {
+<div class="container">
+  <h3>Add Product</h3>
+  <form class="form" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput type="text" formControlName="title" />
+      @if (productForm.get('title')?.invalid) {
+      <mat-error>Required</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Price</mat-label>
+      <input matInput type="number" formControlName="price" min="0" />
+      @if (productForm.get('price')?.invalid) {
+      <mat-error>Required</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Category</mat-label>
+      <input matInput type="text" formControlName="category" />
+      @if (productForm.get('category')?.invalid) {
+      <mat-error>Required</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <textarea matInput type="text" formControlName="description"></textarea>
+    </mat-form-field>
+    <div class="form__image">
+      <label for="image">Image:</label>
+      <input id="image" type="file" (change)="onFileSelected($event)" />
+    </div>
+    <button
+      type="submit"
+      class="form__button"
+      [class.form__button--disabled]="isDisabled()"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+}

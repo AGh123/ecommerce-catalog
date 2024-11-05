@@ -4,5 +4,13 @@ import { Injectable, signal } from '@angular/core';
   providedIn: 'root',
 })
 export class DrawerService {
-  isDrawerOpen = signal(false);
+  private drawerStates = signal<{ [id: string]: boolean }>({});
+
+  setDrawerOpen(id: string, isOpen: boolean) {
+    this.drawerStates.update((states) => ({ ...states, [id]: isOpen }));
+  }
+
+  isDrawerOpen(id: string): boolean {
+    return this.drawerStates()[id] ?? false;
+  }
 }

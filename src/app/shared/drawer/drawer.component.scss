@@ -23,11 +23,15 @@
 .drawer.open.from-right {
   transform: translateX(0);
   right: 0;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
 }
 
 .drawer.open.from-left {
   transform: translateX(0);
   left: 0;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 }
 
 .drawer.from-left {
@@ -39,6 +43,7 @@
   top: 1rem;
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .drawer.from-right .close-button {

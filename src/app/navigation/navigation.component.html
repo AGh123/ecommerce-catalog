@@ -7,20 +7,34 @@
   <mat-icon
     class="navbar__hamburger"
     fontSet="material-icons-outlined"
-    (click)="openDrawer()"
+    (click)="openNavDrawer()"
     >menu</mat-icon
   >
-  <h3 class="navbar__title" routerLink="/">Just Brands</h3>
+  <h3 class="navbar__title" routerLink="/home">Just Brands</h3>
   <div class="navbar__actions">
     <mat-icon class="navbar__actions__icon" fontSet="material-icons-outlined"
       >shopping_bag</mat-icon
     >
+    <mat-icon
+      class="navbar__actions__icon"
+      fontSet="material-icons-outlined"
+      matTooltip="Add product"
+      (click)="openAddProductDrawer()"
+      >add</mat-icon
+    >
   </div>
 </nav>
-<app-drawer>
+<app-drawer [id]="drawers.NavigationDrawer">
   <div class="drawer">
-    <a class="drawer__link" routerLink="/home">Home</a>
-    <a class="drawer__link" routerLink="/catalog">Catalog</a>
-    <a class="drawer__link" routerLink="/about">About</a>
+    <a class="drawer__link" routerLink="/home" (click)="closeDrawer()">Home</a>
+    <a class="drawer__link" routerLink="/catalog" (click)="closeDrawer()"
+      >Catalog</a
+    >
+    <a class="drawer__link" routerLink="/about" (click)="closeDrawer()"
+      >About</a
+    >
   </div>
+</app-drawer>
+<app-drawer direction="right" [id]="drawers.AddProductDrawer">
+  <app-add-product></app-add-product>
 </app-drawer>

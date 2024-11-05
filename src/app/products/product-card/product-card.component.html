@@ -1,0 +1,39 @@
+<div class="product-card">
+  <img
+    [src]="product().image"
+    alt="{{ product().title }}"
+    class="product-card__image"
+  />
+  <div class="product-card__details">
+    <h4 class="product-card__details__title">
+      {{ sliceTitle(product().title)
+      }}{{ product().title.length > 16 ? "..." : "" }}
+    </h4>
+    <p class="product-card__details__price">
+      ${{ product().price.toFixed(2) }}
+    </p>
+    <p class="product-card__details__category">{{ product().category }}</p>
+    <div class="product-card__details__rating">
+      <span
+        >Rating: {{ product().rating.rate }}/10 ({{
+          product().rating.count
+        }})</span
+      >
+    </div>
+    <button class="product-card__button">Add to Cart</button>
+  </div>
+  <div class="product-card__actions">
+    <mat-icon
+      class="product-card__actions__icons"
+      fontSet="material-icons-outlined"
+      matTooltip="Edit product"
+      >edit</mat-icon
+    >
+    <mat-icon
+      class="product-card__actions__icons"
+      fontSet="material-icons-outlined"
+      matTooltip="Delete product"
+      >delete</mat-icon
+    >
+  </div>
+</div>

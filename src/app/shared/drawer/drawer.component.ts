@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class DrawerComponent {
   direction = input<'right' | 'left'>('left');
+  id = input<string>('');
 
   constructor(
     public drawerService: DrawerService,
@@ -37,7 +38,7 @@ export class DrawerComponent {
   }
 
   closeDrawer() {
-    this.drawerService.isDrawerOpen.set(false);
+    this.drawerService.setDrawerOpen(this.id(), false);
     this.resetBodyScroll();
   }
 

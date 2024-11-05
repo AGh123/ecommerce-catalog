@@ -1,8 +1,8 @@
-@if(drawerService.isDrawerOpen()){
+@if(drawerService.isDrawerOpen(id())){
 <div class="overlay" (click)="closeDrawer()"></div>
 <div
   class="drawer"
-  [class.open]="drawerService.isDrawerOpen()"
+  [class.open]="drawerService.isDrawerOpen(id())"
   [class.from-right]="direction() === 'right'"
   [class.from-left]="direction() === 'left'"
 >

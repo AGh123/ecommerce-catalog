@@ -1,1 +1,11 @@
-<p>catalog works!</p>
+@if(isSpinner()){
+<div class="spinner-container">
+  <mat-spinner diameter="300"></mat-spinner>
+</div>
+} @else {
+<div class="product-listing">
+  @for(product of products(); track product.id) {
+  <app-product-card [product]="product"></app-product-card>
+  }
+</div>
+}
