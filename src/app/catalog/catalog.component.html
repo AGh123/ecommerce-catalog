@@ -5,7 +5,20 @@
 } @else {
 <div class="product-listing">
   @for(product of products(); track product.id) {
-  <app-product-card [product]="product"></app-product-card>
+  <app-product-card
+    [product]="product"
+    (editProductClicked)="openEditProductDrawer($event)"
+  ></app-product-card>
   }
 </div>
 }
+
+<ng-container>
+  @if(isEditProductDrawerOpen()){
+  <app-drawer direction="right" [id]="drawers().EditProductDrawer">
+    <app-edit-product
+      [productToBeUpdated]="productToBeUpdated()"
+    ></app-edit-product>
+  </app-drawer>
+  }
+</ng-container>

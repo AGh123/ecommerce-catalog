@@ -31,18 +31,7 @@ export class DrawerComponent {
     }
   }
 
-  private resetBodyScroll() {
-    if (isPlatformBrowser(this.platformId)) {
-      this.renderer.removeStyle(document.body, 'overflow');
-    }
-  }
-
   closeDrawer() {
     this.drawerService.setDrawerOpen(this.id(), false);
-    this.resetBodyScroll();
-  }
-
-  ngOnDestroy() {
-    this.resetBodyScroll();
   }
 }

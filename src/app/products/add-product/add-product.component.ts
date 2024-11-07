@@ -53,7 +53,7 @@ export class AddProductComponent {
         description: this.productForm.get('description')?.value,
         image: this.productForm.get('image')?.value,
       };
-      debugger;
+
       this.productsService.addProduct(product).subscribe(() => {
         this.drawerService.setDrawerOpen(Drawers.AddProductDrawer, false);
         this.productForm.reset();

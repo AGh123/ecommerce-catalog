@@ -7,7 +7,7 @@ export interface AddProduct {
 }
 
 export interface UpdateProduct {
-  id: string;
+  id: string | undefined;
   title: string;
   price: number;
   category: string;

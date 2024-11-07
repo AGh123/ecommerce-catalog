@@ -24,7 +24,7 @@
     >
   </div>
 </nav>
-<app-drawer [id]="drawers.NavigationDrawer">
+<app-drawer [id]="drawers().NavigationDrawer">
   <div class="drawer">
     <a class="drawer__link" routerLink="/home" (click)="closeDrawer()">Home</a>
     <a class="drawer__link" routerLink="/catalog" (click)="closeDrawer()"
@@ -35,6 +35,6 @@
     >
   </div>
 </app-drawer>
-<app-drawer direction="right" [id]="drawers.AddProductDrawer">
+<app-drawer direction="right" [id]="drawers().AddProductDrawer">
   <app-add-product></app-add-product>
 </app-drawer>

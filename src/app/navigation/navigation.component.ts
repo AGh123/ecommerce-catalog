@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { DrawerService } from '../shared/services/drawer.service';
 import { DrawerComponent } from '../shared/drawer/drawer.component';
@@ -21,7 +21,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   styleUrl: './navigation.component.scss',
 })
 export class NavigationComponent {
-  drawers = Drawers;
+  drawers = signal(Drawers);
   constructor(private drawerService: DrawerService) {}
 
   openNavDrawer() {

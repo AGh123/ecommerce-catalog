@@ -3,18 +3,33 @@ import { ProductCardComponent } from '../products/product-card/product-card.comp
 import { ProductsService } from '../products/products.service';
 import { ListProducts } from '../products/products.interface';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { DrawerComponent } from '../shared/drawer/drawer.component';
+import { Drawers } from '../shared/services/drawer.enum';
+import { DrawerService } from '../shared/services/drawer.service';
+import { EditProductComponent } from '../products/edit-product/edit-product.component';
 
 @Component({
   selector: 'app-catalog',
   standalone: true,
-  imports: [ProductCardComponent, MatProgressSpinnerModule],
+  imports: [
+    ProductCardComponent,
+    MatProgressSpinnerModule,
+    DrawerComponent,
+    EditProductComponent,
+  ],
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.scss',
 })
 export class CatalogComponent {
   products = signal<ListProducts[]>([]);
   isSpinner = signal(false);
-  constructor(private productsService: ProductsService) {}
+  productToBeUpdated = signal<ListProducts | undefined>(undefined);
+  drawers = signal(Drawers);
+
+  constructor(
+    private productsService: ProductsService,
+    private drawerService: DrawerService
+  ) {}
 
   ngOnInit() {
     this.isSpinner.set(true);
@@ -24,5 +39,14 @@ export class CatalogComponent {
         this.products.set(products);
         this.isSpinner.set(false);
       });
+  }
+
+  openEditProductDrawer(product: ListProducts) {
+    this.productToBeUpdated.set(product);
+    this.drawerService.setDrawerOpen(Drawers.EditProductDrawer, true);
+  }
+
+  isEditProductDrawerOpen() {
+    return this.drawerService.isDrawerOpen(Drawers.EditProductDrawer);
   }
 }
