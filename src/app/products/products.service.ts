@@ -25,4 +25,8 @@ export class ProductsService {
       product
     );
   }
+
+  deleteProduct(id: string) {
+    return this.http.delete('https://fakestoreapi.com/products/' + id);
+  }
 }

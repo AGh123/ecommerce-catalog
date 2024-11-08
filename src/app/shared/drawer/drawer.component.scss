@@ -17,6 +17,14 @@
   z-index: 1000;
   transition-duration: 0.3s ease-in-out;
   transform: translateX(100%);
+
+  @media (max-width: 1024px) {
+    width: 60%;
+  }
+
+  @media (max-width: 425px) {
+    width: 95%;
+  }
 }
 
 .drawer.open.from-right {

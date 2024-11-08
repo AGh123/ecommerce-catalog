@@ -8,7 +8,7 @@ import {
 import { DrawerService } from '../../shared/services/drawer.service';
 import { ProductsService } from '../products.service';
 import { UpdateProduct } from '../products.interface';
-import { Drawers } from '../../shared/services/drawer.enum';
+import { Drawers } from '../../shared/models/drawer.enum';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -64,7 +64,6 @@ export class EditProductComponent {
 
       this.productsService.updateProduct(product).subscribe(() => {
         this.drawerService.setDrawerOpen(Drawers.EditProductDrawer, false);
-        this.productForm.reset();
         this.isSpinner.set(false);
       });
     } else {

@@ -4,7 +4,7 @@ import { DrawerService } from '../shared/services/drawer.service';
 import { DrawerComponent } from '../shared/drawer/drawer.component';
 import { RouterLink } from '@angular/router';
 import { AddProductComponent } from '../products/add-product/add-product.component';
-import { Drawers } from '../shared/services/drawer.enum';
+import { Drawers } from '../shared/models/drawer.enum';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
@@ -34,5 +34,13 @@ export class NavigationComponent {
 
   closeDrawer() {
     this.drawerService.setDrawerOpen(Drawers.NavigationDrawer, false);
+  }
+
+  isAddProductDrawerOpen() {
+    return this.drawerService.isDrawerOpen(Drawers.AddProductDrawer);
+  }
+
+  isNavigationDrawerOpen() {
+    return this.drawerService.isDrawerOpen(Drawers.NavigationDrawer);
   }
 }

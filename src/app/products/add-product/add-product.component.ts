@@ -10,7 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ProductsService } from '../products.service';
 import { AddProduct } from '../products.interface';
 import { DrawerService } from '../../shared/services/drawer.service';
-import { Drawers } from '../../shared/services/drawer.enum';
+import { Drawers } from '../../shared/models/drawer.enum';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
@@ -56,7 +56,6 @@ export class AddProductComponent {
 
       this.productsService.addProduct(product).subscribe(() => {
         this.drawerService.setDrawerOpen(Drawers.AddProductDrawer, false);
-        this.productForm.reset();
         this.isSpinner.set(false);
       });
     } else {

@@ -24,17 +24,27 @@
     >
   </div>
 </nav>
-<app-drawer [id]="drawers().NavigationDrawer">
-  <div class="drawer">
-    <a class="drawer__link" routerLink="/home" (click)="closeDrawer()">Home</a>
-    <a class="drawer__link" routerLink="/catalog" (click)="closeDrawer()"
-      >Catalog</a
-    >
-    <a class="drawer__link" routerLink="/about" (click)="closeDrawer()"
-      >About</a
-    >
-  </div>
-</app-drawer>
-<app-drawer direction="right" [id]="drawers().AddProductDrawer">
-  <app-add-product></app-add-product>
-</app-drawer>
+<ng-container>
+  @if(isNavigationDrawerOpen()){
+  <app-drawer [id]="drawers().NavigationDrawer">
+    <div class="drawer">
+      <a class="drawer__link" routerLink="/home" (click)="closeDrawer()"
+        >Home</a
+      >
+      <a class="drawer__link" routerLink="/catalog" (click)="closeDrawer()"
+        >Catalog</a
+      >
+      <a class="drawer__link" routerLink="/about" (click)="closeDrawer()"
+        >About</a
+      >
+    </div>
+  </app-drawer>
+  }
+</ng-container>
+<ng-container>
+  @if(isAddProductDrawerOpen()){
+  <app-drawer direction="right" [id]="drawers().AddProductDrawer">
+    <app-add-product></app-add-product>
+  </app-drawer>
+  }
+</ng-container>

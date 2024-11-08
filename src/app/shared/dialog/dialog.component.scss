@@ -1,0 +1,51 @@
+.dialog {
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 0 1.5rem;
+    color: #333;
+  }
+
+  &__content {
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: center;
+    color: #555;
+    margin-bottom: 2rem;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  &__button {
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.25rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+
+    &--primary {
+      background-color: black;
+      color: #fff;
+
+      &:hover {
+        background-color: #333333;
+      }
+    }
+
+    &--secondary {
+      background-color: #e0e0e0;
+      color: #333;
+
+      &:hover {
+        background-color: #bdbdbd;
+      }
+    }
+  }
+}

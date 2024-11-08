@@ -4,7 +4,7 @@ import { ProductsService } from '../products/products.service';
 import { ListProducts } from '../products/products.interface';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DrawerComponent } from '../shared/drawer/drawer.component';
-import { Drawers } from '../shared/services/drawer.enum';
+import { Drawers } from '../shared/models/drawer.enum';
 import { DrawerService } from '../shared/services/drawer.service';
 import { EditProductComponent } from '../products/edit-product/edit-product.component';
 
