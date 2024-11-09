@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../../shared/dialog/dialog.component';
 import { ProductsService } from '../products.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../admin/auth.service';
 
 @Component({
   selector: 'app-product-card',
@@ -21,7 +22,8 @@ export class ProductCardComponent {
   constructor(
     private dialog: MatDialog,
     private productsService: ProductsService,
-    private router: Router
+    private router: Router,
+    public authService: AuthService
   ) {}
 
   openDeleteDialog(product: ListProducts) {

@@ -1,0 +1,42 @@
+@if(!authService.isLoggedin()){
+<form [formGroup]="adminForm" (ngSubmit)="onSubmit()" class="form">
+  @if(error()) {
+  <p class="error-msg">Invalid email or password.</p>
+  }
+  <mat-form-field class="form__field">
+    <mat-label>Email</mat-label>
+    <input matInput type="email" formControlName="email" />
+    @if (this.adminForm.get('email')?.hasError('required')) {
+    <mat-error>Required</mat-error>
+    } @else if(this.adminForm.get('email')?.hasError('email')) {
+    <mat-error>Enter a correct email</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field class="form__field">
+    <mat-label>Password</mat-label>
+    <input matInput type="password" formControlName="password" />
+    @if (adminForm.get('password')?.invalid) {
+    <mat-error>Required</mat-error>
+    }
+  </mat-form-field>
+
+  <button
+    mat-button
+    type="submit"
+    class="form__button"
+    [class.form__button--disabled]="isDisabled()"
+  >
+    Submit
+  </button>
+</form>
+} @else {
+<div class="profile">
+  <div class="profile__info">
+    <p class="profile__email">{{ authService.currentUserSig() }}</p>
+    <button mat-button class="profile__logout-button" (click)="onLogout()">
+      Logout
+    </button>
+  </div>
+</div>
+}

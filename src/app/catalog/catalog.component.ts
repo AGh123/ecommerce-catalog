@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { ProductCardComponent } from '../products/product-card/product-card.component';
 import { ProductsService } from '../products/products.service';
 import { ListProducts } from '../products/products.interface';
@@ -20,7 +20,7 @@ import { EditProductComponent } from '../products/edit-product/edit-product.comp
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.scss',
 })
-export class CatalogComponent {
+export class CatalogComponent implements OnInit {
   products = signal<ListProducts[]>([]);
   isSpinner = signal(false);
   productToBeUpdated = signal<ListProducts | undefined>(undefined);
@@ -31,7 +31,7 @@ export class CatalogComponent {
     private drawerService: DrawerService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.isSpinner.set(true);
     this.productsService
       .getAllProducts()

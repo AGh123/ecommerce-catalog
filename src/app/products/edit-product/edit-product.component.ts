@@ -1,4 +1,4 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, input, OnInit, signal } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -25,7 +25,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   templateUrl: './edit-product.component.html',
   styleUrl: './edit-product.component.scss',
 })
-export class EditProductComponent {
+export class EditProductComponent implements OnInit {
   productForm!: FormGroup;
   isSpinner = signal(false);
   productToBeUpdated = input.required<UpdateProduct | undefined>();
@@ -36,8 +36,7 @@ export class EditProductComponent {
     private drawerService: DrawerService
   ) {}
 
-  ngOnInit() {
-    console.log(this.productToBeUpdated());
+  ngOnInit(): void {
     this.productForm = this.fb.group({
       title: [this.productToBeUpdated()?.title, Validators.required],
       price: [

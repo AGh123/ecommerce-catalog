@@ -2,10 +2,12 @@ import { Component, signal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { DrawerService } from '../shared/services/drawer.service';
 import { DrawerComponent } from '../shared/drawer/drawer.component';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AddProductComponent } from '../products/add-product/add-product.component';
 import { Drawers } from '../shared/models/drawer.enum';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { AuthService } from '../admin/auth.service';
+import { AvatarComponent } from '../shared/avatar/avatar.component';
 
 @Component({
   selector: 'app-navigation',
@@ -16,13 +18,18 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     RouterLink,
     AddProductComponent,
     MatTooltipModule,
+    AvatarComponent,
   ],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
 })
 export class NavigationComponent {
   drawers = signal(Drawers);
-  constructor(private drawerService: DrawerService) {}
+  constructor(
+    private drawerService: DrawerService,
+    public authService: AuthService,
+    private router: Router
+  ) {}
 
   openNavDrawer() {
     this.drawerService.setDrawerOpen(Drawers.NavigationDrawer, true);
@@ -42,5 +49,9 @@ export class NavigationComponent {
 
   isNavigationDrawerOpen() {
     return this.drawerService.isDrawerOpen(Drawers.NavigationDrawer);
+  }
+
+  navigateToAdminPage() {
+    this.router.navigate(['admin']);
   }
 }

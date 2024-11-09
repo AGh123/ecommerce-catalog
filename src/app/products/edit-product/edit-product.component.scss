@@ -7,21 +7,24 @@
 
 .container {
   padding: 3rem;
-  width: 80%;
 }
 
 .form {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(100vh - 15rem);
+  padding-bottom: 3rem;
 
   &__image {
     display: flex;
     flex-direction: row;
     gap: 1rem;
 
-    &__product {
-      width: 2rem;
+    @media (max-width: 768px) {
+      flex-direction: column;
     }
   }
 

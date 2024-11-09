@@ -1,4 +1,4 @@
-import { Component, input, Renderer2, Inject } from '@angular/core';
+import { Component, input, Renderer2, Inject, OnInit } from '@angular/core';
 import { DrawerService } from '../services/drawer.service';
 import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
@@ -11,7 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './drawer.component.html',
   styleUrl: './drawer.component.scss',
 })
-export class DrawerComponent {
+export class DrawerComponent implements OnInit {
   direction = input<'right' | 'left'>('left');
   id = input<string>('');
 
@@ -21,7 +21,7 @@ export class DrawerComponent {
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.removeBodyScroll();
   }
 

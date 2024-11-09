@@ -22,6 +22,7 @@
     </div>
     <button class="product-card__button">Add to Cart</button>
   </div>
+  @if(authService.isLoggedin()){
   <div class="product-card__actions">
     <mat-icon
       class="product-card__actions__icons"
@@ -38,4 +39,5 @@
       >delete</mat-icon
     >
   </div>
+  }
 </div>

@@ -15,6 +15,7 @@
     <mat-icon class="navbar__actions__icon" fontSet="material-icons-outlined"
       >shopping_bag</mat-icon
     >
+    @if(authService.isLoggedin()){
     <mat-icon
       class="navbar__actions__icon"
       fontSet="material-icons-outlined"
@@ -22,6 +23,11 @@
       (click)="openAddProductDrawer()"
       >add</mat-icon
     >
+    <app-avatar
+      name="authService.currentUserSig()"
+      (click)="navigateToAdminPage()"
+    ></app-avatar>
+    }
   </div>
 </nav>
 <ng-container>
