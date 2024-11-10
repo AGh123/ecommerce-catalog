@@ -12,6 +12,7 @@ import { AddProduct } from '../products.interface';
 import { DrawerService } from '../../shared/services/drawer.service';
 import { Drawers } from '../../shared/models/drawer.enum';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ButtonComponent } from '../../shared/components/button/button.component';
 
 @Component({
   selector: 'app-add-product',
@@ -21,6 +22,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatFormFieldModule,
     MatInputModule,
     MatProgressSpinnerModule,
+    ButtonComponent,
   ],
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.scss',

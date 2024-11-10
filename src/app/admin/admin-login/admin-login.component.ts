@@ -9,7 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-import { AvatarComponent } from '../../shared/avatar/avatar.component';
+import { ButtonComponent } from '../../shared/components/button/button.component';
 
 @Component({
   selector: 'app-admin-login',
@@ -18,7 +18,7 @@ import { AvatarComponent } from '../../shared/avatar/avatar.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    AvatarComponent,
+    ButtonComponent,
   ],
   templateUrl: './admin-login.component.html',
   styleUrl: './admin-login.component.scss',

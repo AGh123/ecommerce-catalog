@@ -6,11 +6,18 @@ import {
   MatDialogContent,
   MatDialogTitle,
 } from '@angular/material/dialog';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'app-dialog',
   standalone: true,
-  imports: [MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle],
+  imports: [
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogContent,
+    MatDialogTitle,
+    ButtonComponent,
+  ],
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.scss',
 })

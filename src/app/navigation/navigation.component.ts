@@ -1,24 +1,22 @@
 import { Component, signal } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
 import { DrawerService } from '../shared/services/drawer.service';
-import { DrawerComponent } from '../shared/drawer/drawer.component';
+import { DrawerComponent } from '../shared/components/drawer/drawer.component';
 import { Router, RouterLink } from '@angular/router';
 import { AddProductComponent } from '../products/add-product/add-product.component';
 import { Drawers } from '../shared/models/drawer.enum';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { AuthService } from '../admin/auth.service';
-import { AvatarComponent } from '../shared/avatar/avatar.component';
+import { AvatarComponent } from '../shared/components/avatar/avatar.component';
+import { IconComponent } from '../shared/components/icon/icon.component';
 
 @Component({
   selector: 'app-navigation',
   standalone: true,
   imports: [
-    MatIconModule,
     DrawerComponent,
     RouterLink,
     AddProductComponent,
-    MatTooltipModule,
     AvatarComponent,
+    IconComponent,
   ],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',

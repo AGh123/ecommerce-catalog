@@ -1,17 +1,17 @@
 import { Component, input, output } from '@angular/core';
 import { ListProducts } from '../products.interface';
-import { MatIconModule } from '@angular/material/icon';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from '../../shared/dialog/dialog.component';
+import { DialogComponent } from '../../shared/components/dialog/dialog.component';
 import { ProductsService } from '../products.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../admin/auth.service';
+import { ButtonComponent } from '../../shared/components/button/button.component';
+import { IconComponent } from '../../shared/components/icon/icon.component';
 
 @Component({
   selector: 'app-product-card',
   standalone: true,
-  imports: [MatIconModule, MatTooltipModule],
+  imports: [ButtonComponent, IconComponent],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.scss',
 })
@@ -53,7 +53,7 @@ export class ProductCardComponent {
   }
 
   sliceTitle(title: string) {
-    return title.slice(0, 16);
+    return title.slice(0, 12);
   }
 
   editProduct(product: ListProducts) {

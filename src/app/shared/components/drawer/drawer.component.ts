@@ -1,13 +1,13 @@
 import { Component, input, Renderer2, Inject, OnInit } from '@angular/core';
-import { DrawerService } from '../services/drawer.service';
+import { DrawerService } from '../../services/drawer.service';
 import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'app-drawer',
   standalone: true,
-  imports: [MatIconModule],
+  imports: [IconComponent],
   templateUrl: './drawer.component.html',
   styleUrl: './drawer.component.scss',
 })

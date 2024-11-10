@@ -4,24 +4,13 @@
     <a class="navbar__links__link" routerLink="/catalog">Catalog</a>
     <a class="navbar__links__link" routerLink="/about">About</a>
   </div>
-  <mat-icon
-    class="navbar__hamburger"
-    fontSet="material-icons-outlined"
-    (click)="openNavDrawer()"
-    >menu</mat-icon
-  >
+  <app-icon class="navbar__hamburger" (click)="openNavDrawer()">menu</app-icon>
   <h3 class="navbar__title" routerLink="/home">Just Brands</h3>
   <div class="navbar__actions">
-    <mat-icon class="navbar__actions__icon" fontSet="material-icons-outlined"
-      >shopping_bag</mat-icon
-    >
+    <app-icon tooltip="Open cart">shopping_bag</app-icon>
     @if(authService.isLoggedin()){
-    <mat-icon
-      class="navbar__actions__icon"
-      fontSet="material-icons-outlined"
-      matTooltip="Add product"
-      (click)="openAddProductDrawer()"
-      >add</mat-icon
+    <app-icon tooltip="Add product" (click)="openAddProductDrawer()"
+      >add</app-icon
     >
     <app-avatar
       name="authService.currentUserSig()"

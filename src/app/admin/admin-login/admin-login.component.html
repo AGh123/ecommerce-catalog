@@ -20,15 +20,7 @@
     <mat-error>Required</mat-error>
     }
   </mat-form-field>
-
-  <button
-    mat-button
-    type="submit"
-    class="form__button"
-    [class.form__button--disabled]="isDisabled()"
-  >
-    Submit
-  </button>
+  <app-button [isDisabled]="isDisabled()" width="100%">Submit</app-button>
 </form>
 } @else {
 <div class="profile">

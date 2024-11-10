@@ -1,0 +1,12 @@
+<div class="dialog">
+  <h2 mat-dialog-title class="dialog__title">{{ data.dialogTitle }}</h2>
+  <mat-dialog-content class="dialog__content">
+    {{ data.dialogContent }}
+  </mat-dialog-content>
+  <mat-dialog-actions class="dialog__actions">
+    <app-button (click)="onAnswerOneClick()">{{ data.answerOne }}</app-button>
+    <app-button [isSecondary]="true" (click)="onAnswerTwoClick()">{{
+      data.answerTwo
+    }}</app-button>
+  </mat-dialog-actions>
+</div>

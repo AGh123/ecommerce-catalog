@@ -13,30 +13,21 @@
       ${{ product().price.toFixed(2) }}
     </p>
     <p class="product-card__details__category">{{ product().category }}</p>
-    <div class="product-card__details__rating">
-      <span
-        >Rating: {{ product().rating.rate }}/10 ({{
-          product().rating.count
-        }})</span
-      >
-    </div>
-    <button class="product-card__button">Add to Cart</button>
+    <p class="product-card__details__rating">
+      Rating: {{ product().rating.rate }}/10
+    </p>
+    <p class="product-card__details__count">
+      ({{ product().rating.count }}) Reviews
+    </p>
+    <app-button>Add to cart</app-button>
   </div>
   @if(authService.isLoggedin()){
   <div class="product-card__actions">
-    <mat-icon
-      class="product-card__actions__icons"
-      fontSet="material-icons-outlined"
-      matTooltip="Edit product"
-      (click)="editProduct(product())"
-      >edit</mat-icon
+    <app-icon tooltip="Edit product" (click)="editProduct(product())"
+      >edit</app-icon
     >
-    <mat-icon
-      class="product-card__actions__icons"
-      fontSet="material-icons-outlined"
-      matTooltip="Delete product"
-      (click)="openDeleteDialog(product())"
-      >delete</mat-icon
+    <app-icon tooltip="Delete product" (click)="openDeleteDialog(product())"
+      >delete</app-icon
     >
   </div>
   }

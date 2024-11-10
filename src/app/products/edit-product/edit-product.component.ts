@@ -12,6 +12,7 @@ import { Drawers } from '../../shared/models/drawer.enum';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ButtonComponent } from '../../shared/components/button/button.component';
 
 @Component({
   selector: 'app-edit-product',
@@ -21,6 +22,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatFormFieldModule,
     MatInputModule,
     MatProgressSpinnerModule,
+    ButtonComponent,
   ],
   templateUrl: './edit-product.component.html',
   styleUrl: './edit-product.component.scss',

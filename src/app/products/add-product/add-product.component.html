@@ -35,13 +35,9 @@
       <label for="image">Image:</label>
       <input id="image" type="file" (change)="onFileSelected($event)" />
     </div>
-    <button
-      type="submit"
-      class="form__button"
-      [class.form__button--disabled]="isDisabled()"
+    <app-button [isBlock]="true" [isDisabled]="isDisabled()"
+      >Add product</app-button
     >
-      Submit
-    </button>
   </form>
 </div>
 }
