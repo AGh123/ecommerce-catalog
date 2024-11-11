@@ -1,27 +1,106 @@
-# EcommerceCatalog
+# Angular eCommerce Website
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.6.
+This project is an eCommerce website built with Angular 18, featuring a full product catalog, shopping cart, checkout functionality, and an admin panel for managing products. It utilizes the Fake Store API for product data.
 
-## Development server
+## Table of Contents
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Setup and Installation](#setup-and-installation)
+- [Usage](#usage)
+  - [User Guide](#user-guide)
+  - [Admin Guide](#admin-guide)
+- [API](#api)
+- [Project Structure](#project-structure)
+- [License](#license)
 
-## Code scaffolding
+---
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Features
 
-## Build
+- **User Pages**: Home, Catalog, About, Cart, and Checkout pages.
+- **Product Catalog**: Allows users to view and search for products.
+- **Shopping Cart**: Users can add products to the cart, view them, and proceed to checkout.
+- **Admin Panel**: Accessible at `http://localhost:4200/admin` for managing products and users.
+- **Authentication**: Default credentials for admin login, with functionality to add new admins.
+- **CRUD Operations**: Admins can add, edit, and delete products.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Technologies Used
 
-## Running unit tests
+- **Angular 18**: Frontend framework for building SPAs.
+- **Angular Material**: UI components library for responsive design.
+- **Fake Store API**: Provides mock product data for the catalog.
+- **SCSS**: Styling using variables, mixins, and modular components.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
+## Setup and Installation
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Prerequisites
 
-## Further help
+- **Node.js** (v14 or higher)
+- **Angular CLI** (v15 or higher)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Installation Steps
+
+1. **Clone the Repository**
+
+   Clone the project repository from GitHub to your local machine.
+
+   ```bash
+   git clone https://github.com/AGh123/ecommerce-catalog.git
+   ```
+
+2. **Navigate to the Project Directory**
+
+   ```bash
+   cd your-repo-name
+   ```
+
+3. **Install Dependencies**
+
+   Install all necessary packages using npm.
+
+   ```bash
+   npm install
+   ```
+
+4. **Run the Development Server**
+
+   Start the Angular development server.
+
+   ```bash
+   npm start
+   ```
+
+5. **Open the Application**
+
+   Open your browser and navigate to `http://localhost:4200` to view the application.
+
+---
+
+## Usage
+
+### User Guide
+
+1. **Browse Products**: Go to the catalog to explore available products.
+2. **Add to Cart**: Click on any product to view details and add it to the cart.
+3. **View Cart**: Access the cart to view and manage selected products.
+4. **Checkout**: Complete the checkout process.
+
+### Admin Guide
+
+1. **Access Admin Panel**: Navigate to `http://localhost:4200/admin`.
+2. **Login**: Use the following default credentials:
+   - **Email**: `admin@gmail.com`
+   - **Password**: `admin1`
+3. **Manage Products**: Add, edit, or delete products in the catalog.
+4. **Manage Admins**: Create new admins.
+
+---
+
+## API
+
+This project uses the [Fake Store API](https://fakestoreapi.com/) to simulate a backend, providing product details such as title, price, images, and descriptions.
+
+---
