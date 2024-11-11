@@ -23,4 +23,8 @@ export class CartService {
   getCartProducts() {
     return this.cartProducts();
   }
+
+  clearCart() {
+    this.cartProducts.set([]);
+  }
 }

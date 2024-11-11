@@ -5,6 +5,7 @@ import {
   Inject,
   OnInit,
   signal,
+  OnDestroy,
 } from '@angular/core';
 import { DrawerService } from '../../services/drawer.service';
 import { isPlatformBrowser } from '@angular/common';
@@ -18,7 +19,7 @@ import { IconComponent } from '../icon/icon.component';
   templateUrl: './drawer.component.html',
   styleUrl: './drawer.component.scss',
 })
-export class DrawerComponent implements OnInit {
+export class DrawerComponent implements OnInit, OnDestroy {
   direction = input<'right' | 'left'>('left');
   id = input<string>('');
   private originalOverflow = signal<string | null>(null);
@@ -56,6 +57,10 @@ export class DrawerComponent implements OnInit {
 
   closeDrawer() {
     this.drawerService.setDrawerOpen(this.id(), false);
+    this.restoreBodyScroll();
+  }
+
+  ngOnDestroy(): void {
     this.restoreBodyScroll();
   }
 }

@@ -19,4 +19,9 @@
     }
   </div>
 </div>
-<app-button [isBlock]="true" [isDisabled]="isDisabled()">Check out</app-button>
+<app-button
+  [isBlock]="true"
+  [isDisabled]="isDisabled()"
+  (click)="navigateToCheckOut()"
+  >Check out</app-button
+>

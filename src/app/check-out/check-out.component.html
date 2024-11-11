@@ -1,0 +1,57 @@
+<div class="container">
+  <form [formGroup]="clientForm" (ngSubmit)="onSubmit()" class="form">
+    <h3 class="form__title">Contact & Delivery</h3>
+    <mat-form-field class="form__field">
+      <mat-label>Full Name</mat-label>
+      <input matInput type="text" formControlName="fullName" />
+      @if (this.clientForm.get('fullName')?.hasError('required')) {
+      <mat-error>Required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="form__field">
+      <mat-label>Phone Number</mat-label>
+      <input matInput type="text" formControlName="phoneNumber" max="8" />
+      @if (this.clientForm.get('phoneNumber')?.hasError('required')) {
+      <mat-error>Required</mat-error>
+      } @else if(this.clientForm.get('phoneNumber')?.hasError('minlength')) {
+      <mat-error>Minimum 8 characters</mat-error>
+      }@else if(this.clientForm.get('phoneNumber')?.hasError('maxlength')) {
+      <mat-error>Maximum 8 characters</mat-error>
+      }@else if(this.clientForm.get('phoneNumber')?.hasError('pattern')) {
+      <mat-error>Enter a valid phone number</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="form__field">
+      <mat-label>Address</mat-label>
+      <input matInput type="text" formControlName="address" />
+      @if (this.clientForm.get('address')?.hasError('required')) {
+      <mat-error>Required</mat-error>
+      }
+    </mat-form-field>
+    <app-button [isDisabled]="isDisabled()" width="100%">Purchase</app-button>
+  </form>
+  <div class="products">
+    <h3 class="products__title">Products</h3>
+    <div class="products__list">
+      @for(product of cartProducts; track product.id) {
+      <div class="cart-product">
+        <img
+          class="cart-product__image"
+          [src]="product.image"
+          [alt]="product.title"
+        />
+        <div class="cart-product__details">
+          <h3 class="cart-product__title">{{ product.title }}</h3>
+          <p class="cart-product__price">{{ product.price | currency }}</p>
+        </div>
+      </div>
+      }
+    </div>
+    <div class="products__total">
+      <span>Total:</span>
+      <span>{{ getTotalPrice() | currency }}</span>
+    </div>
+  </div>
+</div>
