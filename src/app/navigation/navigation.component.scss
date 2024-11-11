@@ -5,6 +5,9 @@
   align-items: center;
   padding: 1.5rem 5rem;
   border-bottom: 1px solid var(--gray-light);
+  position: sticky;
+  top: 0;
+  background-color: var(--white);
 
   &__links {
     display: flex;

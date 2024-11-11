@@ -1,0 +1,36 @@
+<div class="container">
+  <h3 class="title">Register Admin</h3>
+  @if(error()) {
+  <p class="error-msg">Email already exists.</p>
+  }
+  <form [formGroup]="adminForm" (ngSubmit)="onSubmit()" class="form">
+    <mat-form-field class="form__field">
+      <mat-label>Username</mat-label>
+      <input matInput type="text" formControlName="username" />
+      @if (this.adminForm.get('username')?.hasError('required')) {
+      <mat-error>Required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="form__field">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" />
+      @if (this.adminForm.get('email')?.hasError('required')) {
+      <mat-error>Required</mat-error>
+      } @else if(this.adminForm.get('email')?.hasError('email')) {
+      <mat-error>Enter a correct email</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="form__field">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" />
+      @if (this.adminForm.get('password')?.hasError('required')) {
+      <mat-error>Required</mat-error>
+      } @else if(this.adminForm.get('password')?.hasError('minlength')) {
+      <mat-error>Minimum 6 characters</mat-error>
+      }
+    </mat-form-field>
+    <app-button [isDisabled]="isDisabled()" width="100%">Submit</app-button>
+  </form>
+</div>

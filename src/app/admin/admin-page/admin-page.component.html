@@ -1,0 +1,25 @@
+<div class="container">
+  <mat-tab-group class="admin-tabs" animationDuration="50ms">
+    <mat-tab label="Account" class="tab">
+      <div class="profile">
+        <app-avatar
+          size="4"
+          name="authService.currentUserSig().displayName"
+        ></app-avatar>
+        <div class="profile__details">
+          <h3 class="profile__username">
+            {{ authService.currentUserSig()?.displayName }}
+          </h3>
+          <p class="profile__email">
+            {{ authService.currentUserSig()?.email }}
+          </p>
+          <app-button (click)="onLogout()" width="100%">Logout</app-button>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Orders">Orders content here</mat-tab>
+    <mat-tab label="Register Admin">
+      <app-register-admin></app-register-admin>
+    </mat-tab>
+  </mat-tab-group>
+</div>

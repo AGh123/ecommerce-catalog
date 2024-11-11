@@ -45,7 +45,14 @@ export const appConfig: ApplicationConfig = {
       useFactory: (authService: AuthService) => {
         return () =>
           firstValueFrom(authService.user$).then((user: any) => {
-            authService.currentUserSig.set(user ? user.email : null);
+            authService.currentUserSig.set(
+              user
+                ? {
+                    email: user.email,
+                    displayName: user.displayName,
+                  }
+                : null
+            );
           });
       },
       deps: [AuthService],

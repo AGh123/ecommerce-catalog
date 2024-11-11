@@ -7,13 +7,19 @@
   <app-icon class="navbar__hamburger" (click)="openNavDrawer()">menu</app-icon>
   <h3 class="navbar__title" routerLink="/home">Just Brands</h3>
   <div class="navbar__actions">
-    <app-icon tooltip="Open cart" (click)="openCart()">shopping_bag</app-icon>
+    <app-icon
+      tooltip="Open cart"
+      (click)="openCart()"
+      [matBadge]="getCartProductsCount"
+      [matBadgeHidden]="getCartProductsCount === 0"
+      >shopping_bag</app-icon
+    >
     @if(authService.isLoggedin()){
     <app-icon tooltip="Add product" (click)="openAddProductDrawer()"
       >add</app-icon
     >
     <app-avatar
-      name="authService.currentUserSig()"
+      name="authService.currentUserSig().displayName"
       (click)="navigateToAdminPage()"
     ></app-avatar>
     }

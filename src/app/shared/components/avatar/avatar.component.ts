@@ -9,6 +9,7 @@ import { Component, input } from '@angular/core';
 })
 export class AvatarComponent {
   name = input.required<string>();
+  size = input<string>('2');
 
   getUserInitials() {
     return this.name().charAt(0).toUpperCase();

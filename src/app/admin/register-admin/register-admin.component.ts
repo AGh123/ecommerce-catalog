@@ -1,31 +1,29 @@
 import { Component, signal } from '@angular/core';
 import {
-  FormBuilder,
   FormGroup,
-  ReactiveFormsModule,
+  FormBuilder,
   Validators,
+  ReactiveFormsModule,
 } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { ButtonComponent } from '../../shared/components/button/button.component';
-import { AdminPageComponent } from '../admin-page/admin-page.component';
 
 @Component({
-  selector: 'app-admin-login',
+  selector: 'app-register-admin',
   standalone: true,
   imports: [
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     ButtonComponent,
-    AdminPageComponent,
   ],
-  templateUrl: './admin-login.component.html',
-  styleUrl: './admin-login.component.scss',
+  templateUrl: './register-admin.component.html',
+  styleUrl: './register-admin.component.scss',
 })
-export class AdminLoginComponent {
+export class RegisterAdminComponent {
   adminForm: FormGroup;
   error = signal<string>('');
 
@@ -35,6 +33,7 @@ export class AdminLoginComponent {
     private router: Router
   ) {
     this.adminForm = this.fb.group({
+      username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
@@ -46,13 +45,20 @@ export class AdminLoginComponent {
 
   onSubmit() {
     this.authService
-      .login(
+      .register(
         this.adminForm.get('email')?.value,
-        this.adminForm.get('password')?.value
+        this.adminForm.get('password')?.value,
+        this.adminForm.get('username')?.value
       )
       .subscribe({
         next: () => {
-          this.router.navigate(['/']);
+          this.router
+            .navigateByUrl('http://localhost:4200', {
+              skipLocationChange: true,
+            })
+            .then(() => {
+              this.router.navigate(['/admin']);
+            });
         },
         error: (err) => {
           this.error.set(err);

@@ -8,6 +8,8 @@ import { AuthService } from '../admin/auth.service';
 import { AvatarComponent } from '../shared/components/avatar/avatar.component';
 import { IconComponent } from '../shared/components/icon/icon.component';
 import { CartComponent } from '../cart/cart.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { CartService } from '../cart/service/cart.service';
 
 @Component({
   selector: 'app-navigation',
@@ -19,6 +21,7 @@ import { CartComponent } from '../cart/cart.component';
     AvatarComponent,
     IconComponent,
     CartComponent,
+    MatBadgeModule,
   ],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
@@ -28,7 +31,8 @@ export class NavigationComponent {
   constructor(
     private drawerService: DrawerService,
     public authService: AuthService,
-    private router: Router
+    private router: Router,
+    private cartService: CartService
   ) {}
 
   openNavDrawer() {
@@ -61,5 +65,9 @@ export class NavigationComponent {
 
   openCart() {
     this.drawerService.setDrawerOpen(Drawers.CartDrawer, true);
+  }
+
+  get getCartProductsCount() {
+    return this.cartService.getCartProducts().length;
   }
 }

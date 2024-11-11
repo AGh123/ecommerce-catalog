@@ -1,0 +1,40 @@
+.container {
+  padding: 2rem 5rem;
+
+  @media (max-width: 425px) {
+    padding: 2rem 1rem;
+  }
+}
+
+.admin-tabs {
+  box-shadow: 0 0.25rem 0.6rem var(--black-opacity);
+  border-radius: 0.5rem;
+  background-color: var(--off-white);
+  height: calc(100vh - 10rem);
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  @media (max-width: 425px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__username {
+    margin: 0;
+  }
+
+  &__email {
+    margin: 0;
+  }
+}

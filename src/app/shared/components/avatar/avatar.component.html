@@ -1,1 +1,7 @@
-<div class="avatar">{{ getUserInitials() }}</div>
+<div
+  class="avatar"
+  [style.width]="size() + 'rem'"
+  [style.height]="size() + 'rem'"
+>
+  {{ getUserInitials() }}
+</div>

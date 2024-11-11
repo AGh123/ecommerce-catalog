@@ -1,0 +1,17 @@
+.container {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  gap: 1rem;
+}
+
+.error-msg {
+  color: var(--red);
+}

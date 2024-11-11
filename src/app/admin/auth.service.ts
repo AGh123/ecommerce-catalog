@@ -8,6 +8,7 @@ import {
   user,
 } from '@angular/fire/auth';
 import { BehaviorSubject, from, Observable } from 'rxjs';
+import { Admin } from './admin.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -16,12 +17,19 @@ export class AuthService {
   firebaseAuth = inject(Auth);
   private userSubject = new BehaviorSubject<any>(user(this.firebaseAuth));
   user$ = this.userSubject.asObservable();
-  currentUserSig = signal<string | null | undefined>(undefined);
+  currentUserSig = signal<Admin | null | undefined>(undefined);
 
   constructor() {
     user(this.firebaseAuth).subscribe((user: any) => {
       this.userSubject.next(user);
-      this.currentUserSig.set(user ? user.email : null);
+      this.currentUserSig.set(
+        user
+          ? {
+              email: user.email,
+              displayName: user.displayName,
+            }
+          : null
+      );
     });
   }
 
@@ -59,6 +67,6 @@ export class AuthService {
   }
 
   isLoggedin() {
-    return !!this.currentUserSig();
+    return !!this.currentUserSig()?.email;
   }
 }

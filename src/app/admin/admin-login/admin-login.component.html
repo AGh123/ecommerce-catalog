@@ -16,19 +16,14 @@
   <mat-form-field class="form__field">
     <mat-label>Password</mat-label>
     <input matInput type="password" formControlName="password" />
-    @if (adminForm.get('password')?.invalid) {
+    @if (this.adminForm.get('password')?.hasError('required')) {
     <mat-error>Required</mat-error>
+    } @else if(this.adminForm.get('password')?.hasError('minlength')) {
+    <mat-error>Minimum 6 characters</mat-error>
     }
   </mat-form-field>
   <app-button [isDisabled]="isDisabled()" width="100%">Submit</app-button>
 </form>
 } @else {
-<div class="profile">
-  <div class="profile__info">
-    <p class="profile__email">{{ authService.currentUserSig() }}</p>
-    <button mat-button class="profile__logout-button" (click)="onLogout()">
-      Logout
-    </button>
-  </div>
-</div>
+<app-admin-page></app-admin-page>
 }
