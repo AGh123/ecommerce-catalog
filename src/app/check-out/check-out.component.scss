@@ -5,9 +5,9 @@
   padding: 1rem;
   max-width: 30rem;
   margin: 2rem auto;
-  background-color: var(--off-white);
+  background-color: var(--white-muted);
   border-radius: 0.5rem;
-  box-shadow: 0 0.25rem 0.6rem var(--black-opacity5);
+  box-shadow: 0 0.25rem 0.6rem var(--overlay-dark);
   overflow-y: auto;
   max-height: calc(100vh - 10rem);
   @media (max-width: 425px) {
@@ -61,7 +61,7 @@
   padding: 1rem;
   border-radius: 0.5rem;
   background-color: var(--white);
-  box-shadow: 0 0.1rem 0.5rem var(--black-opacity);
+  box-shadow: 0 0.1rem 0.5rem var(--overlay-light);
 
   @media (max-width: 425px) {
     flex-direction: column;

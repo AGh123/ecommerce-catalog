@@ -1,4 +1,4 @@
-export interface AddProduct {
+export interface AddProductInterface {
   title: string;
   price: number;
   category: string;
@@ -6,7 +6,7 @@ export interface AddProduct {
   image: any;
 }
 
-export interface UpdateProduct {
+export interface UpdateProductInterface {
   id: string | undefined;
   title: string;
   price: number;
@@ -15,7 +15,7 @@ export interface UpdateProduct {
   image: any;
 }
 
-export interface ListProducts {
+export interface GetProductInterface {
   id: string;
   title: string;
   price: number;

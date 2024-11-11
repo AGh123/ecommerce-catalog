@@ -1,14 +1,14 @@
 import { Component, input, output } from '@angular/core';
-import { ListProducts } from '../products.interface';
+import { GetProductInterface } from '../../shared/models/products.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../../shared/components/dialog/dialog.component';
-import { ProductsService } from '../products.service';
+import { ProductsService } from '../../shared/services/products.service';
 import { Router } from '@angular/router';
-import { AuthService } from '../../admin/auth.service';
+import { AuthService } from '../../shared/services/auth.service';
 import { ButtonComponent } from '../../shared/components/button/button.component';
 import { IconComponent } from '../../shared/components/icon/icon.component';
-import { CartService } from '../../cart/service/cart.service';
-import { Drawers } from '../../shared/models/drawer.enum';
+import { CartService } from '../../shared/services/cart.service';
+import { DrawersEnum } from '../../shared/models/drawer.enum';
 import { DrawerService } from '../../shared/services/drawer.service';
 
 @Component({
@@ -19,8 +19,8 @@ import { DrawerService } from '../../shared/services/drawer.service';
   styleUrl: './product-card.component.scss',
 })
 export class ProductCardComponent {
-  product = input.required<ListProducts>();
-  editProductClicked = output<ListProducts>();
+  product = input.required<GetProductInterface>();
+  editProductClicked = output<GetProductInterface>();
 
   constructor(
     private dialog: MatDialog,
@@ -31,7 +31,7 @@ export class ProductCardComponent {
     private drawerService: DrawerService
   ) {}
 
-  openDeleteDialog(product: ListProducts) {
+  openDeleteDialog(product: GetProductInterface) {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '30rem',
       data: {
@@ -61,12 +61,12 @@ export class ProductCardComponent {
     return title.slice(0, 12);
   }
 
-  editProduct(product: ListProducts) {
+  editProduct(product: GetProductInterface) {
     this.editProductClicked.emit(product);
   }
 
-  addToCart(product: ListProducts) {
+  addToCart(product: GetProductInterface) {
     this.cartService.addToCart(product);
-    this.drawerService.setDrawerOpen(Drawers.CartDrawer, true);
+    this.drawerService.setDrawerStatus(DrawersEnum.CartDrawer, true);
   }
 }

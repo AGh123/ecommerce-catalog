@@ -8,7 +8,7 @@ import {
   user,
 } from '@angular/fire/auth';
 import { BehaviorSubject, from, Observable } from 'rxjs';
-import { Admin } from './admin.interface';
+import { AdminsInterface } from '../models/admin.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +17,7 @@ export class AuthService {
   firebaseAuth = inject(Auth);
   private userSubject = new BehaviorSubject<any>(user(this.firebaseAuth));
   user$ = this.userSubject.asObservable();
-  currentUserSig = signal<Admin | null | undefined>(undefined);
+  currentUserSig = signal<AdminsInterface | null | undefined>(undefined);
 
   constructor() {
     user(this.firebaseAuth).subscribe((user: any) => {

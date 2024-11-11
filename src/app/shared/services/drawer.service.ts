@@ -1,13 +1,13 @@
 import { Injectable, signal } from '@angular/core';
-import { Drawer } from '../models/drawer.interface';
+import { DrawersInterface } from '../models/drawer.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DrawerService {
-  private drawerStates = signal<Drawer>({});
+  private drawerStates = signal<DrawersInterface>({});
 
-  setDrawerOpen(id: string, isOpen: boolean) {
+  setDrawerStatus(id: string, isOpen: boolean) {
     this.drawerStates.update((states) => ({ ...states, [id]: isOpen }));
   }
 

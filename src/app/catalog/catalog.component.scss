@@ -10,7 +10,7 @@
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  background-color: var(--off-white);
+  background-color: var(--white-muted);
   overflow-x: auto;
   max-height: calc(100vh - 6rem);
 

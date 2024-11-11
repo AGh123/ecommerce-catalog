@@ -1,15 +1,15 @@
 import { Injectable, signal } from '@angular/core';
-import { ListProducts } from '../../products/products.interface';
+import { GetProductInterface } from '../models/products.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  private cartProducts = signal<ListProducts[]>([]);
+  private cartProducts = signal<GetProductInterface[]>([]);
 
   constructor() {}
 
-  addToCart(product: ListProducts) {
+  addToCart(product: GetProductInterface) {
     this.cartProducts().push(product);
   }
 

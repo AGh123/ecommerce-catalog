@@ -1,23 +1,4 @@
-:root {
-  --primary: #000000;
-  --primary-light: #222222;
-  --primary-lighter: #333333;
-
-  --secondary: #408ee0;
-  --secondary-dark: #1b75be;
-  --secondary-darker: #0051a2;
-
-  --white: #ffffff;
-  --off-white: #f9f9f9;
-  --gray-light: #dedede;
-  --gray: #aaaaaa;
-  --gray-dark: #666666;
-
-  --black-opacity: rgba(0, 0, 0, 0.1);
-  --black-opacity5: rgba(0, 0, 0, 0.5);
-
-  --red: red;
-}
+@import "../public/scss/colors.scss";
 
 * {
   margin: 0;

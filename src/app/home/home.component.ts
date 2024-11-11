@@ -1,11 +1,11 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { ListProducts } from '../products/products.interface';
-import { ProductsService } from '../products/products.service';
+import { GetProductInterface } from '../shared/models/products.interface';
+import { ProductsService } from '../shared/services/products.service';
 import { ProductCardComponent } from '../products/product-card/product-card.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ButtonComponent } from '../shared/components/button/button.component';
 import { Router } from '@angular/router';
-import { Drawers } from '../shared/models/drawer.enum';
+import { DrawersEnum } from '../shared/models/drawer.enum';
 import { DrawerService } from '../shared/services/drawer.service';
 
 @Component({
@@ -16,9 +16,9 @@ import { DrawerService } from '../shared/services/drawer.service';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
-  products = signal<ListProducts[]>([]);
+  products = signal<GetProductInterface[]>([]);
   isSpinner = signal(false);
-  drawers = signal(Drawers);
+  drawers = signal(DrawersEnum);
 
   constructor(
     private productsService: ProductsService,
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
     this.isSpinner.set(true);
     this.productsService
       .getLimitedProducts(4)
-      .subscribe((products: ListProducts[]) => {
+      .subscribe((products: GetProductInterface[]) => {
         this.products.set(products);
         this.isSpinner.set(false);
       });

@@ -9,7 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { ButtonComponent } from '../shared/components/button/button.component';
-import { CartService } from '../cart/service/cart.service';
+import { CartService } from '../shared/services/cart.service';
 import { CommonModule } from '@angular/common';
 
 @Component({

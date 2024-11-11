@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { ButtonComponent } from '../shared/components/button/button.component';
-import { CartService } from './service/cart.service';
+import { CartService } from '../shared/services/cart.service';
 import { CommonModule } from '@angular/common';
 import { IconComponent } from '../shared/components/icon/icon.component';
 import { Router } from '@angular/router';
 import { DrawerService } from '../shared/services/drawer.service';
-import { Drawers } from '../shared/models/drawer.enum';
+import { DrawersEnum } from '../shared/models/drawer.enum';
 
 @Component({
   selector: 'app-cart',
@@ -34,7 +34,7 @@ export class CartComponent {
   }
 
   navigateToCheckOut() {
-    this.drawerService.setDrawerOpen(Drawers.CartDrawer, false);
+    this.drawerService.setDrawerStatus(DrawersEnum.CartDrawer, false);
     this.router.navigate(['/checkout']);
   }
 }

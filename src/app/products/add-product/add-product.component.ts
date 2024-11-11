@@ -7,10 +7,10 @@ import {
 } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ProductsService } from '../products.service';
-import { AddProduct } from '../products.interface';
+import { ProductsService } from '../../shared/services/products.service';
+import { AddProductInterface } from '../../shared/models/products.interface';
 import { DrawerService } from '../../shared/services/drawer.service';
-import { Drawers } from '../../shared/models/drawer.enum';
+import { DrawersEnum } from '../../shared/models/drawer.enum';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ButtonComponent } from '../../shared/components/button/button.component';
 
@@ -48,7 +48,7 @@ export class AddProductComponent {
   onSubmit() {
     if (!this.isDisabled()) {
       this.isSpinner.set(true);
-      let product: AddProduct = {
+      let product: AddProductInterface = {
         title: this.productForm.get('title')?.value,
         price: this.productForm.get('price')?.value,
         category: this.productForm.get('category')?.value,
@@ -57,7 +57,7 @@ export class AddProductComponent {
       };
 
       this.productsService.addProduct(product).subscribe(() => {
-        this.drawerService.setDrawerOpen(Drawers.AddProductDrawer, false);
+        this.drawerService.setDrawerStatus(DrawersEnum.AddProductDrawer, false);
         this.isSpinner.set(false);
       });
     } else {

@@ -1,14 +1,14 @@
 .error-msg {
-  color: var(--red);
+  color: var(--color-alert);
 }
 
 .form {
   max-width: 30rem;
   margin: 5rem auto;
   padding: 2rem;
-  background-color: var(--off-white);
+  background-color: var(--white-muted);
   border-radius: 0.5rem;
-  box-shadow: 0 0.25rem 0.5rem var(--black-opacity);
+  box-shadow: 0 0.25rem 0.5rem var(--overlay-light);
 
   @media (max-width: 425px) {
     max-width: 18rem;

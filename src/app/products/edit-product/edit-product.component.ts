@@ -6,9 +6,9 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { DrawerService } from '../../shared/services/drawer.service';
-import { ProductsService } from '../products.service';
-import { UpdateProduct } from '../products.interface';
-import { Drawers } from '../../shared/models/drawer.enum';
+import { ProductsService } from '../../shared/services/products.service';
+import { UpdateProductInterface } from '../../shared/models/products.interface';
+import { DrawersEnum } from '../../shared/models/drawer.enum';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -30,7 +30,7 @@ import { ButtonComponent } from '../../shared/components/button/button.component
 export class EditProductComponent implements OnInit {
   productForm!: FormGroup;
   isSpinner = signal(false);
-  productToBeUpdated = input.required<UpdateProduct | undefined>();
+  productToBeUpdated = input.required<UpdateProductInterface | undefined>();
 
   constructor(
     private fb: FormBuilder,
@@ -54,7 +54,7 @@ export class EditProductComponent implements OnInit {
   onSubmit() {
     if (!this.isDisabled()) {
       this.isSpinner.set(true);
-      let product: UpdateProduct = {
+      let product: UpdateProductInterface = {
         id: this.productToBeUpdated()?.id,
         title: this.productForm.get('title')?.value,
         price: this.productForm.get('price')?.value,
@@ -64,7 +64,10 @@ export class EditProductComponent implements OnInit {
       };
 
       this.productsService.updateProduct(product).subscribe(() => {
-        this.drawerService.setDrawerOpen(Drawers.EditProductDrawer, false);
+        this.drawerService.setDrawerStatus(
+          DrawersEnum.EditProductDrawer,
+          false
+        );
         this.isSpinner.set(false);
       });
     } else {

@@ -1,6 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AddProduct, ListProducts, UpdateProduct } from './products.interface';
+import {
+  AddProductInterface,
+  GetProductInterface,
+  UpdateProductInterface,
+} from '../models/products.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -8,19 +12,21 @@ import { AddProduct, ListProducts, UpdateProduct } from './products.interface';
 export class ProductsService {
   constructor(private http: HttpClient) {}
 
-  addProduct(product: AddProduct) {
-    return this.http.post<AddProduct>(
+  addProduct(product: AddProductInterface) {
+    return this.http.post<AddProductInterface>(
       'https://fakestoreapi.com/products',
       product
     );
   }
 
   getAllProducts() {
-    return this.http.get<ListProducts[]>('https://fakestoreapi.com/products');
+    return this.http.get<GetProductInterface[]>(
+      'https://fakestoreapi.com/products'
+    );
   }
 
-  updateProduct(product: UpdateProduct) {
-    return this.http.put<UpdateProduct>(
+  updateProduct(product: UpdateProductInterface) {
+    return this.http.put<UpdateProductInterface>(
       'https://fakestoreapi.com/products/' + product.id,
       product
     );
@@ -31,7 +37,7 @@ export class ProductsService {
   }
 
   getLimitedProducts(count: number) {
-    return this.http.get<ListProducts[]>(
+    return this.http.get<GetProductInterface[]>(
       'https://fakestoreapi.com/products?limit=' + count
     );
   }

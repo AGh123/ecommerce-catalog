@@ -12,7 +12,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
-import { AuthService } from './admin/auth.service';
+import { AuthService } from './shared/services/auth.service';
 import { firstValueFrom } from 'rxjs';
 
 const firebaseConfig = {

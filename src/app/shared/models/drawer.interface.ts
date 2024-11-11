@@ -1,3 +1,3 @@
-export interface Drawer {
+export interface DrawersInterface {
   [id: string]: boolean;
 }

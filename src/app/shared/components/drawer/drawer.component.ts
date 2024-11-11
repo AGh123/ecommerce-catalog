@@ -56,7 +56,7 @@ export class DrawerComponent implements OnInit, OnDestroy {
   }
 
   closeDrawer() {
-    this.drawerService.setDrawerOpen(this.id(), false);
+    this.drawerService.setDrawerStatus(this.id(), false);
     this.restoreBodyScroll();
   }
 
