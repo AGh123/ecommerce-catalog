@@ -29,4 +29,10 @@ export class ProductsService {
   deleteProduct(id: string) {
     return this.http.delete('https://fakestoreapi.com/products/' + id);
   }
+
+  getLimitedProducts(count: number) {
+    return this.http.get<ListProducts[]>(
+      'https://fakestoreapi.com/products?limit=' + count
+    );
+  }
 }

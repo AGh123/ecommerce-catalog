@@ -7,7 +7,7 @@
   <app-icon class="navbar__hamburger" (click)="openNavDrawer()">menu</app-icon>
   <h3 class="navbar__title" routerLink="/home">Just Brands</h3>
   <div class="navbar__actions">
-    <app-icon tooltip="Open cart">shopping_bag</app-icon>
+    <app-icon tooltip="Open cart" (click)="openCart()">shopping_bag</app-icon>
     @if(authService.isLoggedin()){
     <app-icon tooltip="Add product" (click)="openAddProductDrawer()"
       >add</app-icon
@@ -40,6 +40,13 @@
   @if(isAddProductDrawerOpen()){
   <app-drawer direction="right" [id]="drawers().AddProductDrawer">
     <app-add-product></app-add-product>
+  </app-drawer>
+  }
+</ng-container>
+<ng-container>
+  @if(isCartDrawerOpen()){
+  <app-drawer direction="right" [id]="drawers().CartDrawer">
+    <app-cart></app-cart>
   </app-drawer>
   }
 </ng-container>

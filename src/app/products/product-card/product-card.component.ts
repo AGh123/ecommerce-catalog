@@ -7,6 +7,9 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../admin/auth.service';
 import { ButtonComponent } from '../../shared/components/button/button.component';
 import { IconComponent } from '../../shared/components/icon/icon.component';
+import { CartService } from '../../cart/service/cart.service';
+import { Drawers } from '../../shared/models/drawer.enum';
+import { DrawerService } from '../../shared/services/drawer.service';
 
 @Component({
   selector: 'app-product-card',
@@ -23,7 +26,9 @@ export class ProductCardComponent {
     private dialog: MatDialog,
     private productsService: ProductsService,
     private router: Router,
-    public authService: AuthService
+    public authService: AuthService,
+    private cartService: CartService,
+    private drawerService: DrawerService
   ) {}
 
   openDeleteDialog(product: ListProducts) {
@@ -58,5 +63,10 @@ export class ProductCardComponent {
 
   editProduct(product: ListProducts) {
     this.editProductClicked.emit(product);
+  }
+
+  addToCart(product: ListProducts) {
+    this.cartService.addToCart(product);
+    this.drawerService.setDrawerOpen(Drawers.CartDrawer, true);
   }
 }

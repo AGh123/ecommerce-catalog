@@ -7,6 +7,7 @@ import { Drawers } from '../shared/models/drawer.enum';
 import { AuthService } from '../admin/auth.service';
 import { AvatarComponent } from '../shared/components/avatar/avatar.component';
 import { IconComponent } from '../shared/components/icon/icon.component';
+import { CartComponent } from '../cart/cart.component';
 
 @Component({
   selector: 'app-navigation',
@@ -17,6 +18,7 @@ import { IconComponent } from '../shared/components/icon/icon.component';
     AddProductComponent,
     AvatarComponent,
     IconComponent,
+    CartComponent,
   ],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
@@ -51,5 +53,13 @@ export class NavigationComponent {
 
   navigateToAdminPage() {
     this.router.navigate(['admin']);
+  }
+
+  isCartDrawerOpen() {
+    return this.drawerService.isDrawerOpen(Drawers.CartDrawer);
+  }
+
+  openCart() {
+    this.drawerService.setDrawerOpen(Drawers.CartDrawer, true);
   }
 }

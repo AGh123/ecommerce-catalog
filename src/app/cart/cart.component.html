@@ -1,0 +1,22 @@
+<div class="container">
+  <h3>Cart</h3>
+  <div class="products-container">
+    @for(product of cartProducts; track product.id) {
+    <div class="cart-product">
+      <img
+        class="cart-product__image"
+        [src]="product.image"
+        [alt]="product.title"
+      />
+      <div class="cart-product__details">
+        <h3 class="cart-product__title">{{ product.title }}</h3>
+        <p class="cart-product__price">{{ product.price | currency }}</p>
+        <app-icon tooltip="Delete" (click)="removeProduct(product.id)"
+          >delete</app-icon
+        >
+      </div>
+    </div>
+    }
+  </div>
+</div>
+<app-button [isBlock]="true" [isDisabled]="isDisabled()">Check out</app-button>

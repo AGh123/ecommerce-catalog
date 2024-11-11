@@ -19,7 +19,7 @@
     <p class="product-card__details__count">
       ({{ product().rating.count }}) Reviews
     </p>
-    <app-button>Add to cart</app-button>
+    <app-button (click)="addToCart(product())">Add to cart</app-button>
   </div>
   @if(authService.isLoggedin()){
   <div class="product-card__actions">
