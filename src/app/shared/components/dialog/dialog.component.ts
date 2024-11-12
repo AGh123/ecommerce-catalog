@@ -2,7 +2,6 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import {
   MatDialogActions,
-  MatDialogClose,
   MatDialogContent,
   MatDialogTitle,
 } from '@angular/material/dialog';
@@ -13,7 +12,6 @@ import { ButtonComponent } from '../button/button.component';
   standalone: true,
   imports: [
     MatDialogActions,
-    MatDialogClose,
     MatDialogContent,
     MatDialogTitle,
     ButtonComponent,

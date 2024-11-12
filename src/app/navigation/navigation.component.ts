@@ -10,6 +10,7 @@ import { IconComponent } from '../shared/components/icon/icon.component';
 import { CartComponent } from '../cart/cart.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { CartService } from '../shared/services/cart.service';
+import { WeatherService } from '../shared/services/weather.service';
 
 @Component({
   selector: 'app-navigation',
@@ -32,7 +33,8 @@ export class NavigationComponent {
     private drawerService: DrawerService,
     public authService: AuthService,
     private router: Router,
-    private cartService: CartService
+    private cartService: CartService,
+    public weatherService: WeatherService
   ) {}
 
   openNavDrawer() {

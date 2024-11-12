@@ -6,7 +6,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ButtonComponent } from '../shared/components/button/button.component';
 import { Router } from '@angular/router';
 import { DrawersEnum } from '../shared/models/drawer.enum';
-import { DrawerService } from '../shared/services/drawer.service';
 
 @Component({
   selector: 'app-home',
@@ -22,8 +21,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private productsService: ProductsService,
-    private router: Router,
-    private drawerService: DrawerService
+    private router: Router
   ) {}
 
   ngOnInit(): void {
