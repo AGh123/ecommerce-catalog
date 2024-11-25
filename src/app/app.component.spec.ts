@@ -1,10 +1,32 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { provideRouter } from '@angular/router';
+import { NavigationComponent } from './navigation/navigation.component';
+import { WeatherService } from './shared/services/weather.service';
+import { AuthService } from './shared/services/auth.service';
 
 describe('AppComponent', () => {
+  let mockWeatherService: jasmine.SpyObj<WeatherService>;
+  let mockAuthService: jasmine.SpyObj<AuthService>;
+
   beforeEach(async () => {
+    mockWeatherService = jasmine.createSpyObj('WeatherService', [
+      'getUserLocation',
+    ]);
+
+    mockAuthService = jasmine.createSpyObj('AuthService', [
+      'isAuthenticated',
+      'isLoggedin',
+    ]);
+    mockAuthService.isLoggedin.and.returnValue(true);
+
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [AppComponent, NavigationComponent],
+      providers: [
+        { provide: WeatherService, useValue: mockWeatherService },
+        { provide: AuthService, useValue: mockAuthService },
+        provideRouter([]),
+      ],
     }).compileComponents();
   });
 
@@ -14,16 +36,15 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'ecommerce-catalog' title`, () => {
+  it('should have the title "ecommerce-catalog"', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('ecommerce-catalog');
+    expect(app.title).toBe('ecommerce-catalog');
   });
 
-  it('should render title', () => {
+  it('should fetch weather data on initialization', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, ecommerce-catalog');
+    expect(mockWeatherService.getUserLocation).toHaveBeenCalled();
   });
 });
